@@ -59,37 +59,50 @@ namespace HeightMapGenerator
 
         private void ProcessFiles(string sourcePath, string destinationPath)
         {
-            var subfolders = Directory.GetDirectories(sourcePath);
+            var allFiles = Directory.GetFiles(sourcePath, "*.dds", SearchOption.AllDirectories);
 
-            foreach (var subfolder in subfolders)
+            foreach (var filePath in allFiles)
             {
-                var files = Directory.GetFiles(subfolder);
-                foreach (var filePath in files)
+                string fileName = Path.GetFileNameWithoutExtension(filePath);
+                string extension = Path.GetExtension(filePath);
+                string pattern = @"^(.*)\.Terrain\.HeightMap\.(.*)$";
+
+                if (Regex.IsMatch(fileName, pattern))
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(filePath);
-                    string extension = Path.GetExtension(filePath);
-                    string pattern = @"^(.*)\.Terrain\.HeightMap\.(.*)$";
+                    var match = Regex.Match(fileName, pattern);
+                    string prefix = match.Groups[1].Value; // Part before .Terrain
+                    string suffix = match.Groups[2].Value; // Part after .HeightMap
 
-                    if (Regex.IsMatch(fileName, pattern))
+                    string[] suffixParts = suffix.Split('.');
+                    if (suffixParts.Length >= 2)
                     {
-                        var match = Regex.Match(fileName, pattern);
-                        string prefix = match.Groups[1].Value;
-                        string suffix = match.Groups[2].Value;
+                        // Insert -32768.32768 before the last two parts
+                        string newSuffix = $"{string.Join(".", suffixParts.Take(suffixParts.Length - 2))}.-32768.32768.{string.Join(".", suffixParts.Skip(suffixParts.Length - 2))}";
+                        string newFileName = $"{prefix}.HeightMap.{newSuffix}{extension}";
+                        string newFilePath = Path.Combine(destinationPath, newFileName);
 
-                        string[] suffixParts = suffix.Split('.');
-                        if (suffixParts.Length >= 2)
+                        // Check if the file already exists to prevent overwriting
+                        if (File.Exists(newFilePath))
                         {
-                            string newSuffix = $"{string.Join(".", suffixParts.Take(suffixParts.Length - 2))}.-32768.32768.{string.Join(".", suffixParts.Skip(suffixParts.Length - 2))}";
-                            string newFileName = $"{prefix}.HeightMap.{newSuffix}{extension}";
-                            string newFilePath = Path.Combine(destinationPath, newFileName);
-
-                            File.Move(filePath, newFilePath);
-                            Log($"Renamed: {filePath} -> {newFileName}");
+                            Log($"Skipped existing file: {newFilePath}");
+                        }
+                        else
+                        {
+                            // Copy the file to the destination
+                            File.Copy(filePath, newFilePath);
+                            Log($"Copied: {filePath} -> {newFilePath}");
                         }
                     }
                 }
+                else
+                {
+                    Log($"Skipped file (no match): {fileName}");
+                }
             }
+
+            MessageBox.Show("File processing complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         private void Log(string message)
         {
