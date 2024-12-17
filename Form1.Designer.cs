@@ -14,99 +14,105 @@
         private System.Windows.Forms.Label lblSourcePath;
         private System.Windows.Forms.Label lblDestinationPath;
 
-        /// <summary>
-        /// Required method for Designer support.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.txtSourcePath = new System.Windows.Forms.TextBox();
-            this.btnBrowseSource = new System.Windows.Forms.Button();
-            this.txtDestinationPath = new System.Windows.Forms.TextBox();
-            this.btnBrowseDestination = new System.Windows.Forms.Button();
-            this.btnProcessFiles = new System.Windows.Forms.Button();
-            this.txtLog = new System.Windows.Forms.TextBox();
-            this.lblSourcePath = new System.Windows.Forms.Label();
-            this.lblDestinationPath = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-
-            // Source Path Label
-            this.lblSourcePath.AutoSize = true;
-            this.lblSourcePath.Location = new System.Drawing.Point(12, 15);
-            this.lblSourcePath.Name = "lblSourcePath";
-            this.lblSourcePath.Size = new System.Drawing.Size(71, 13);
-            this.lblSourcePath.TabIndex = 0;
-            this.lblSourcePath.Text = "Source Path:";
-
-            // Source Path TextBox
-            this.txtSourcePath.Location = new System.Drawing.Point(100, 12);
-            this.txtSourcePath.Name = "txtSourcePath";
-            this.txtSourcePath.Size = new System.Drawing.Size(300, 20);
-            this.txtSourcePath.TabIndex = 1;
-
-            // Browse Source Button
-            this.btnBrowseSource.Location = new System.Drawing.Point(410, 10);
-            this.btnBrowseSource.Name = "btnBrowseSource";
-            this.btnBrowseSource.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowseSource.TabIndex = 2;
-            this.btnBrowseSource.Text = "Browse...";
-            this.btnBrowseSource.UseVisualStyleBackColor = true;
-            this.btnBrowseSource.Click += new System.EventHandler(this.btnBrowseSource_Click);
-
-            // Destination Path Label
-            this.lblDestinationPath.AutoSize = true;
-            this.lblDestinationPath.Location = new System.Drawing.Point(12, 50);
-            this.lblDestinationPath.Name = "lblDestinationPath";
-            this.lblDestinationPath.Size = new System.Drawing.Size(92, 13);
-            this.lblDestinationPath.TabIndex = 3;
-            this.lblDestinationPath.Text = "Destination Path:";
-
-            // Destination Path TextBox
-            this.txtDestinationPath.Location = new System.Drawing.Point(100, 47);
-            this.txtDestinationPath.Name = "txtDestinationPath";
-            this.txtDestinationPath.Size = new System.Drawing.Size(300, 20);
-            this.txtDestinationPath.TabIndex = 4;
-
-            // Browse Destination Button
-            this.btnBrowseDestination.Location = new System.Drawing.Point(410, 45);
-            this.btnBrowseDestination.Name = "btnBrowseDestination";
-            this.btnBrowseDestination.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowseDestination.TabIndex = 5;
-            this.btnBrowseDestination.Text = "Browse...";
-            this.btnBrowseDestination.UseVisualStyleBackColor = true;
-            this.btnBrowseDestination.Click += new System.EventHandler(this.btnBrowseDestination_Click);
-
-            // Process Files Button
-            this.btnProcessFiles.Location = new System.Drawing.Point(15, 80);
-            this.btnProcessFiles.Name = "btnProcessFiles";
-            this.btnProcessFiles.Size = new System.Drawing.Size(470, 30);
-            this.btnProcessFiles.TabIndex = 6;
-            this.btnProcessFiles.Text = "Process Files";
-            this.btnProcessFiles.UseVisualStyleBackColor = true;
-            this.btnProcessFiles.Click += new System.EventHandler(this.btnProcessFiles_Click);
-
-            // Log TextBox
-            this.txtLog.Location = new System.Drawing.Point(15, 120);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.ReadOnly = true;
-            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(470, 200);
-            this.txtLog.TabIndex = 7;
-
+            txtSourcePath = new TextBox();
+            btnBrowseSource = new Button();
+            txtDestinationPath = new TextBox();
+            btnBrowseDestination = new Button();
+            btnProcessFiles = new Button();
+            txtLog = new TextBox();
+            lblSourcePath = new Label();
+            lblDestinationPath = new Label();
+            SuspendLayout();
+            // 
+            // txtSourcePath
+            // 
+            txtSourcePath.Location = new Point(107, 12);
+            txtSourcePath.Name = "txtSourcePath";
+            txtSourcePath.Size = new Size(422, 23);
+            txtSourcePath.TabIndex = 1;
+            // 
+            // btnBrowseSource
+            // 
+            btnBrowseSource.Location = new Point(535, 15);
+            btnBrowseSource.Name = "btnBrowseSource";
+            btnBrowseSource.Size = new Size(75, 23);
+            btnBrowseSource.TabIndex = 2;
+            btnBrowseSource.Text = "Browse...";
+            btnBrowseSource.UseVisualStyleBackColor = true;
+            btnBrowseSource.Click += btnBrowseSource_Click;
+            // 
+            // txtDestinationPath
+            // 
+            txtDestinationPath.Location = new Point(107, 47);
+            txtDestinationPath.Name = "txtDestinationPath";
+            txtDestinationPath.Size = new Size(422, 23);
+            txtDestinationPath.TabIndex = 4;
+            // 
+            // btnBrowseDestination
+            // 
+            btnBrowseDestination.Location = new Point(535, 50);
+            btnBrowseDestination.Name = "btnBrowseDestination";
+            btnBrowseDestination.Size = new Size(75, 23);
+            btnBrowseDestination.TabIndex = 5;
+            btnBrowseDestination.Text = "Browse...";
+            btnBrowseDestination.UseVisualStyleBackColor = true;
+            btnBrowseDestination.Click += btnBrowseDestination_Click;
+            // 
+            // btnProcessFiles
+            // 
+            btnProcessFiles.Location = new Point(15, 80);
+            btnProcessFiles.Name = "btnProcessFiles";
+            btnProcessFiles.Size = new Size(595, 30);
+            btnProcessFiles.TabIndex = 6;
+            btnProcessFiles.Text = "Process Files";
+            btnProcessFiles.UseVisualStyleBackColor = true;
+            btnProcessFiles.Click += btnProcessFiles_Click;
+            // 
+            // txtLog
+            // 
+            txtLog.Location = new Point(15, 120);
+            txtLog.Multiline = true;
+            txtLog.Name = "txtLog";
+            txtLog.ReadOnly = true;
+            txtLog.ScrollBars = ScrollBars.Vertical;
+            txtLog.Size = new Size(595, 200);
+            txtLog.TabIndex = 7;
+            // 
+            // lblSourcePath
+            // 
+            lblSourcePath.AutoSize = true;
+            lblSourcePath.Location = new Point(12, 15);
+            lblSourcePath.Name = "lblSourcePath";
+            lblSourcePath.Size = new Size(73, 15);
+            lblSourcePath.TabIndex = 0;
+            lblSourcePath.Text = "Source Path:";
+            // 
+            // lblDestinationPath
+            // 
+            lblDestinationPath.AutoSize = true;
+            lblDestinationPath.Location = new Point(12, 50);
+            lblDestinationPath.Name = "lblDestinationPath";
+            lblDestinationPath.Size = new Size(97, 15);
+            lblDestinationPath.TabIndex = 3;
+            lblDestinationPath.Text = "Destination Path:";
+            // 
             // Form1
-            this.ClientSize = new System.Drawing.Size(500, 340);
-            this.Controls.Add(this.txtLog);
-            this.Controls.Add(this.btnProcessFiles);
-            this.Controls.Add(this.btnBrowseDestination);
-            this.Controls.Add(this.txtDestinationPath);
-            this.Controls.Add(this.lblDestinationPath);
-            this.Controls.Add(this.btnBrowseSource);
-            this.Controls.Add(this.txtSourcePath);
-            this.Controls.Add(this.lblSourcePath);
-            this.Name = "Form1";
-            this.Text = "File Processor";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            ClientSize = new Size(622, 340);
+            Controls.Add(txtLog);
+            Controls.Add(btnProcessFiles);
+            Controls.Add(btnBrowseDestination);
+            Controls.Add(txtDestinationPath);
+            Controls.Add(lblDestinationPath);
+            Controls.Add(btnBrowseSource);
+            Controls.Add(txtSourcePath);
+            Controls.Add(lblSourcePath);
+            Name = "Form1";
+            Text = "Height Map Generator";
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
